@@ -280,15 +280,16 @@ h1  {
     align-items: center;
     container-type: inline-size;
     container-name: portfolio;
+    justify-content: space-evenly;
 }
 
 .portfolio__title   {
-    font-size: 2.7rem;
+    font-size: 2rem;
+    margin-bottom: 0;
     text-align: center;
-    padding: 20px;
 }
 
-.portfolio__grid-container   {
+.portfolio__project-container   {
     display: grid;
     grid-template-columns: 1fr;
     max-width: 1300px;
@@ -297,7 +298,7 @@ h1  {
     gap: 12px;
     padding: 12px;
     text-align: center;
-    min-height: 90vh;
+    min-height: 84vh;
 }
 
 .portfolio__project {
@@ -306,7 +307,7 @@ h1  {
     background-size: cover;
     display: grid;
     place-content: center;
-    min-height: 200px;
+    border-radius: 12px;
 }
 
 .portfolio__project:hover {
@@ -316,9 +317,36 @@ h1  {
 
 /* -----------PORTFOLIO QUERIES------------- */
 
-@container portfolio (min-width: 900px) {
+@container portfolio (min-width: 56.25rem) {
     .portfolio__project-container {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fill,minmax(420px, 1fr));
+    }
+
+    .portfolio__project:first-child {
+        grid-column: span 2;
+    }
+
+    .portfolio__project:nth-child(6) {
+        grid-column: span 2;
+    }
+
+    .portfolio__title {
+        font-size: 2.5rem;
+    }
+}
+
+@container portfolio (min-width: 81.25rem) {
+    .portfolio__project-container {
+        grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
+    }
+
+    .portfolio__project:first-child {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .portfolio__project:nth-child(6) {
+        grid-column: span 4;
     }
 }
 
